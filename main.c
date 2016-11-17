@@ -1,19 +1,12 @@
-/* Name: main.c  ver 1.0
- * Content: main ÇÔ¼ö.
- * Implementation: YSW
- * 
- * Last modified 2008/01/01
- */
-
 #include "common.h"
 #include "screenOut.h"
 #include "phoneFunc.h"
 
 enum{INPUT=1, SHOWALL, SEARCH, DELETE, CHANGE, QUIT};
 
-/* ÇÔ    ¼ö: int main (void)
- * ±â    ´É: »ç¿ëÀÚ ¼±ÅÃ Ã³¸®. 
- * ¹İ    È¯: Á¤»ó Á¾·á½Ã 0.
+/* í•¨    ìˆ˜: int main (void)
+ * ê¸°    ëŠ¥: ì‚¬ìš©ì ì„ íƒ ì²˜ë¦¬. 
+ * ë°˜    í™˜: ì •ìƒ ì¢…ë£Œì‹œ 0.
  *
  */
 int main(void)
@@ -24,7 +17,7 @@ int main(void)
     while(1)
     {
         ShowMenu();
-        fputs("¼±ÅÃÇÏ¼¼¿ä : ", stdout);
+        fputs("ì„ íƒí•˜ì„¸ìš” : ", stdout);
         scanf("%d", &inputMenu);
 		getchar();
   		        
@@ -53,7 +46,7 @@ int main(void)
         
         if(inputMenu==QUIT)
         {
-            puts("ÀÌ¿ëÇØ ÁÖ¼Å¼­ °í¸¶¿ö¿ä~");
+            puts("ì´ìš©í•´ ì£¼ì…”ì„œ ê³ ë§ˆì›Œìš”~");
 			StoreDataToFileInStruct();
             break;
         }
