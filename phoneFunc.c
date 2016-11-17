@@ -1,10 +1,3 @@
-/* Name: phoneFunc.c  ver 1.1
- * Content: ÀüÈ­¹øÈ£ ÄÁÆ®·Ñ ÇÔ¼ö.
- * Implementation: YSW
- * 
- * Last modified 2016/03/26
- */
-
 #include "common.h"
 #include "phoneData.h"
 #include "screenOut.h"
@@ -14,9 +7,9 @@
 int numOfData=0;
 phoneData * phoneList[LIST_NUM];
 
-/* ÇÔ    ¼ö: void InputPhoneData(void)
- * ±â    ´É: ÀüÈ­¹øÈ£ °ü·Ã µ¥ÀÌÅÍ ÀÔ·Â ¹Ş¾Æ¼­ ÀúÀå. 
- * ¹İ    È¯: void.
+/* í•¨    ìˆ˜: void InputPhoneData(void)
+ * ê¸°    ëŠ¥: ì „í™”ë²ˆí˜¸ ê´€ë ¨ ë°ì´í„° ì…ë ¥ ë°›ì•„ì„œ ì €ì¥. 
+ * ë°˜    í™˜: void.
  *
  */
 
@@ -24,7 +17,7 @@ void StoreDataToFileInStruct(void)
 {
 	int i;
 
-	FILE * fp = fopen("Saved data.sav", "wb");  // ÆÄÀÏ »õ·Î »ı¼º.
+	FILE * fp = fopen("Saved data.sav", "wb");  // íŒŒì¼ ìƒˆë¡œ ìƒì„±.
 
 	fwrite(&numOfData, sizeof(int), 1, fp);
 
@@ -42,7 +35,7 @@ void LoadDataFromFileInStruct(void)
 
 	FILE * fp = fopen("Saved data.sav", "rb");
 
-	if (fp == NULL)  // ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê´Â´Ù¸é.
+	if (fp == NULL)  // íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠëŠ”ë‹¤ë©´.
 		return;
 
 	fread(&numOfData, sizeof(int), 1, fp);
@@ -62,13 +55,13 @@ void InputPhoneData(void)
 
 	phoneList[numOfData] = (phoneData*)malloc(sizeof(phoneData));
 
-	fputs("ÀÌ¸§ ÀÔ·Â: ", stdout);
+	fputs("ì´ë¦„ ì…ë ¥: ", stdout);
 	fgets(phoneList[numOfData]->name, sizeof(phoneList[numOfData]->name), stdin);
 
 	len = strlen(phoneList[numOfData]->name);
 	phoneList[numOfData]->name[len - 1] = '\0';
 
-	fputs("ÀüÈ­¹øÈ£ ÀÔ·Â: ", stdout);
+	fputs("ì „í™”ë²ˆí˜¸ ì…ë ¥: ", stdout);
 	fgets(phoneList[numOfData]->phoneNum, sizeof(phoneList[numOfData]->phoneNum), stdin);
 
 	len = strlen(phoneList[numOfData]->phoneNum);
@@ -79,7 +72,7 @@ void InputPhoneData(void)
 		if (!strcmp(phoneList[i]->name, phoneList[numOfData]->name))
 		{
 			if (!strcmp(phoneList[i]->phoneNum, phoneList[numOfData]->phoneNum)) {
-				puts("ÀÌ¹Ì ÀÔ·ÂµÈ µ¥ÀÌÅÍ ÀÔ´Ï´Ù.");
+				puts("ì´ë¯¸ ì…ë ¥ëœ ë°ì´í„° ì…ë‹ˆë‹¤.");
 				getchar();
 				free(phoneList[numOfData]);
 				return;
@@ -90,9 +83,9 @@ void InputPhoneData(void)
 	StoreDataToFileInStruct();
 }
 
-/* ÇÔ	 ¼ö: void ShowAllData(void)
- * ±â    ´É: ÀúÀåµÈ µ¥ÀÌÅÍ ÀüÃ¼ Ãâ·Â. 
- * ¹İ    È¯: void.
+/* í•¨	 ìˆ˜: void ShowAllData(void)
+ * ê¸°    ëŠ¥: ì €ì¥ëœ ë°ì´í„° ì „ì²´ ì¶œë ¥. 
+ * ë°˜    í™˜: void.
  *
  */
 void ShowAllData(void)
@@ -101,20 +94,20 @@ void ShowAllData(void)
 
 	if (numOfData == 0)
 	{
-		puts("Á¤º¸°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+		puts("ì •ë³´ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		getchar();
 		return;
 	}
 	for (i = 0; i < numOfData; i++)
 		ShowPhoneInfoByPtr(phoneList[i]);
 	
-	puts("Ãâ·ÂÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+	puts("ì¶œë ¥ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 	getchar();
 }
 
-/* ÇÔ	 ¼ö: void SearchPhoneData(void)
- * ±â	 ´É: ÀúÀåµÈ µ¥ÀÌÅÍ °Ë»ö ÈÄ Ãâ·Â
- * ¹İ	 È¯: void
+/* í•¨	 ìˆ˜: void SearchPhoneData(void)
+ * ê¸°	 ëŠ¥: ì €ì¥ëœ ë°ì´í„° ê²€ìƒ‰ í›„ ì¶œë ¥
+ * ë°˜	 í™˜: void
  *
  */
 void SearchPhoneData(void)
@@ -124,7 +117,7 @@ void SearchPhoneData(void)
 	int cnt = 0;
 	int len;
 
-	fputs("Ã£´Â ÀÌ¸§Àº? ", stdout);
+	fputs("ì°¾ëŠ” ì´ë¦„ì€? ", stdout);
 	fgets(Search, sizeof(Search), stdin);
 
 	len = strlen(Search);
@@ -143,16 +136,16 @@ void SearchPhoneData(void)
 	
 	if (cnt == 0)
 	{
-		puts("´ë»óÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù. ");
+		puts("ëŒ€ìƒì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ");
 		getchar();
 	}
 	else
 		getchar();
 }
 
-/* ÇÔ	 ¼ö: void DeletePhoneData(void)
- * ±â	 ´É: ÀúÀåµÈ µ¥ÀÌÅÍ »èÁ¦
- * ¹İ	 È¯: void
+/* í•¨	 ìˆ˜: void DeletePhoneData(void)
+ * ê¸°	 ëŠ¥: ì €ì¥ëœ ë°ì´í„° ì‚­ì œ
+ * ë°˜	 í™˜: void
  *
  */
 
@@ -165,7 +158,7 @@ void DeletePhoneData(void)
 	int Sidx[100];
 	int len;
 
-	fputs("»èÁ¦ÇÒ ÀÌ¸§Àº? ", stdout);
+	fputs("ì‚­ì œí•  ì´ë¦„ì€? ", stdout);
 	fgets(Search, sizeof(Search), stdin);
 
 	len = strlen(Search);
@@ -193,7 +186,7 @@ void DeletePhoneData(void)
 				}
 				numOfData--;
 
-				puts("»èÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+				puts("ì‚­ì œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 				getchar();
 				return;
 			}
@@ -201,7 +194,7 @@ void DeletePhoneData(void)
 	}
 	else if (cnt == 0)
 	{
-		puts("Ã£´Â ÀÌ¸§ÀÌ ¾ø½À´Ï´Ù.");
+		puts("ì°¾ëŠ” ì´ë¦„ì´ ì—†ìŠµë‹ˆë‹¤.");
 		getchar();
 	}
 	else
@@ -217,7 +210,7 @@ void DeletePhoneData(void)
 				j++;
 			}
 		}
-			fputs("¼±ÅÃ: ", stdout);
+			fputs("ì„ íƒ: ", stdout);
 			scanf("%d", &sel);
 		j = 0;
 		for (i = 0; i < numOfData; i++)
@@ -231,7 +224,7 @@ void DeletePhoneData(void)
 					phoneList[i] = phoneList[i + 1];
 					numOfData--;
 					StoreDataToFileInStruct();
-					puts("»èÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+					puts("ì‚­ì œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 					getchar();
 					getchar();
 				}
@@ -293,7 +286,7 @@ void ChangePhoneData(void)
 	int sel;
 	int len;
 
-	fputs("º¯°æÇÒ ÀÌ¸§Àº? ", stdout);
+	fputs("ë³€ê²½í•  ì´ë¦„ì€? ", stdout);
 	fgets(Search, sizeof(Search), stdin);
 
 	len = strlen(Search);
@@ -316,7 +309,7 @@ void ChangePhoneData(void)
 		{
 			if (!strcmp(Search, phoneList[i]->name))
 			{
-				fputs("º¯°æÇÒ ÀüÈ­¹øÈ£´Â? ", stdout);
+				fputs("ë³€ê²½í•  ì „í™”ë²ˆí˜¸ëŠ”? ", stdout);
 				fgets(phoneList[i]->phoneNum, sizeof(phoneList[i]->phoneNum), stdin);
 				StoreDataToFileInStruct();
 				return;
@@ -325,7 +318,7 @@ void ChangePhoneData(void)
 	}
 	else if (cnt == 0)
 	{
-		puts("Ã£´Â ÀÌ¸§ÀÌ ¾ø½À´Ï´Ù.");
+		puts("ì°¾ëŠ” ì´ë¦„ì´ ì—†ìŠµë‹ˆë‹¤.");
 		getchar();
 	}
 	else
@@ -341,7 +334,7 @@ void ChangePhoneData(void)
 				j++;
 			}
 		}
-		fputs("¼±ÅÃ: ", stdout);
+		fputs("ì„ íƒ: ", stdout);
 		scanf("%d", &sel);
 		j = 0;
 		for (i = 0; i < numOfData; i++)
@@ -350,7 +343,7 @@ void ChangePhoneData(void)
 				if (j == sel)
 				{
 					j = Sidx[j-1];
-					fputs("º¯°æÇÒ ÀüÈ­¹øÈ£´Â? ", stdout);
+					fputs("ë³€ê²½í•  ì „í™”ë²ˆí˜¸ëŠ”? ", stdout);
 					fgets(phoneList[j]->phoneNum, sizeof(phoneList[j]->phoneNum), stdin);
 					StoreDataToFileInStruct();
 					return;
