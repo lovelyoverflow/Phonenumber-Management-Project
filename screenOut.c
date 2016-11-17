@@ -1,58 +1,51 @@
-/* Name: screenOut.c  ver 1.0
- * Content: ÄÜ¼Ö Ãâ·ÂÀ» À§ÇÑ ÇÔ¼ö Á¤ÀÇ
- * Implementation: YSW
- * 
- * Last modified 2008/01/01
- */
-
 #include "common.h"
 #include "phoneData.h"
 
-/* ÇÔ    ¼ö: void ShowMenu(void)
- * ±â    ´É: ¼±ÅÃÀ» À§ÇÑ ¸Ş´º Ãâ·Â. 
- * ¹İ    È¯: void.
+/* í•¨    ìˆ˜: void ShowMenu(void)
+ * ê¸°    ëŠ¥: ì„ íƒì„ ìœ„í•œ ë©”ë‰´ ì¶œë ¥. 
+ * ë°˜    í™˜: void.
  *
  */
 void ShowMenu(void)
 {
     system("cls");   //stdlib.h
     
-    printf("¦¬¦¬¦¬¦¬¦¬ ¸Ş  ´º ¦¬¦¬¦¬¦¬¦¬¦¬¦¬ \n");
-    printf(" 1. ÀüÈ­¹øÈ£ ÀÔ·Â \n");
-    printf(" 2. ÀüÃ¼ Á¤º¸ Ãâ·Â \n");
-	printf(" 3. ÀüÈ­¹øÈ£ °Ë»ö \n");
-	printf(" 4. ÀüÈ­¹øÈ£ »èÁ¦ \n");
-	printf(" 5. ÀüÈ­¹øÈ£ º¯°æ \n");
-    printf(" 6. Á¾·á \n");
-    printf("¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬ \n");
-    printf("¼±ÅÃ¡· ");
+    printf("â”â”â”â”â” ë©”  ë‰´ â”â”â”â”â”â”â” \n");
+    printf(" 1. ì „í™”ë²ˆí˜¸ ì…ë ¥ \n");
+    printf(" 2. ì „ì²´ ì •ë³´ ì¶œë ¥ \n");
+	printf(" 3. ì „í™”ë²ˆí˜¸ ê²€ìƒ‰ \n");
+	printf(" 4. ì „í™”ë²ˆí˜¸ ì‚­ì œ \n");
+	printf(" 5. ì „í™”ë²ˆí˜¸ ë³€ê²½ \n");
+    printf(" 6. ì¢…ë£Œ \n");
+    printf("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â” \n");
+    printf("ì„ íƒã€‹ ");
 }
 
-/* ÇÔ    ¼ö: void ShowPhoneInfo(phoneData phone)
- * ±â    ´É: ÀÌ¸§°ú ÀüÈ­¹øÈ£ Á¤º¸ Ãâ·Â.
- * ¹İ    È¯: void.
+/* í•¨    ìˆ˜: void ShowPhoneInfo(phoneData phone)
+ * ê¸°    ëŠ¥: ì´ë¦„ê³¼ ì „í™”ë²ˆí˜¸ ì •ë³´ ì¶œë ¥.
+ * ë°˜    í™˜: void.
  *
  */
 void ShowPhoneInfo(phoneData phone)
 {    
-    printf("¦®¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬ \n"   ); 
-    printf("¦­ ¢º ÀÌ¸§: %s \n", phone.name           );
-    printf("¦­ ¢º ÀüÈ­¹øÈ£: %s \n", phone.phoneNum   );
-    printf("¦±¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬ \n\n" );
+    printf("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â” \n"   ); 
+    printf("â”ƒ â–¶ ì´ë¦„: %s \n", phone.name           );
+    printf("â”ƒ â–¶ ì „í™”ë²ˆí˜¸: %s \n", phone.phoneNum   );
+    printf("â”—â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â” \n\n" );
 }
 
 
-/* ÇÔ	 ¼ö: void ShowPhoneInfoByPtr(phoneData * phone)
-* ±â	 ´É: ÀúÀåµÈ µ¥ÀÌÅÍ ÀüÃ¼ Ãâ·Â
-* ¹İ	 È¯: void
+/* í•¨	 ìˆ˜: void ShowPhoneInfoByPtr(phoneData * phone)
+* ê¸°	 ëŠ¥: ì €ì¥ëœ ë°ì´í„° ì „ì²´ ì¶œë ¥
+* ë°˜	 í™˜: void
 *
 */
 
 void ShowPhoneInfoByPtr(phoneData * phone)
 {
-	printf("¦®¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬ \n");
-	printf("¦­ ¢º ÀÌ¸§: %s \n", phone->name);
-	printf("¦­ ¢º ÀüÈ­¹øÈ£: %s \n", phone->phoneNum);
-	printf("¦±¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬ \n\n");
+	printf("â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â” \n");
+	printf("â”ƒ â–¶ ì´ë¦„: %s \n", phone->name);
+	printf("â”ƒ â–¶ ì „í™”ë²ˆí˜¸: %s \n", phone->phoneNum);
+	printf("â”—â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â” \n\n");
 }
 /* end of file */
